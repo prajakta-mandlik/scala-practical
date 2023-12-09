@@ -4,8 +4,10 @@ object average {
   def main(args:Array[String]) 
   { 
       println("enter first no.")     
-var           n1=scala.io.StdIn.readInt()      
-println("enter second no.")     var n2=scala.io.StdIn.readInt()    var average=0
+     var    n1=scala.io.StdIn.readInt()      
+println("enter second no.")    
+var n2=scala.io.StdIn.readInt()   
+var average=0
 var sum=0     
 for(i<-n1to n2)      
  sum=sum+i         average=sum/(n2-n1+1) 
@@ -24,22 +26,31 @@ sum is : 105350  average is : 350
   { 
     for(i<-1 to 5) 
     {  
-     var n1=scala.util.Random         var n=n1.nextInt(100)
+     var n1=scala.util.Random        
+      var n=n1.nextInt(100)
        var sum=0
        for(k<-1 to n-1) 
       { 
         if(n%k==0)  
- {                  sum=sum+k 
+        {                  
+          sum=sum+k 
        }
-      }                if(sum==n)
-     println("number is perfect"+n) 
+      }                
+      if(sum==n)
+         println("number is perfect"+n) 
 
-else 
-      println("number is not perfect"+n) 
- }   
-} 
-} Output 
-number is perfect  28 number is not perfect  5 number is not perfect  74 number is not perfect  13 number is not perfect  73 
+      else 
+        println("number is not perfect"+n) 
+    }   
+  } 
+}
+
+ Output 
+number is perfect  28
+ number is not perfect  5 
+ number is not perfect  74
+  number is not perfect  13
+number is not perfect  73 
 
 
 
@@ -47,19 +58,20 @@ number is perfect  28 number is not perfect  5 number is not perfect  74 number 
  object prime { 
   def main(args:Array[String]) 
   {     
-var sum=0     for(k<-2 to 100) 
-{
-   var c:Int=0
-   for(i<-2 to k-1) 
-   {
-    if(k%i==0)
-    c=c+1        
-   }          
-   if(c==0)
-   sum=sum+k 
- } 
- println(" sum of prime no's is "+sum) 
-} 
+      var sum=0     
+      for(k<-2 to 100) 
+      {
+        var c:Int=0
+        for(i<-2 to k-1) 
+        {
+          if(k%i==0)
+          c=c+1        
+        }          
+        if(c==0)
+        sum=sum+k 
+      } 
+      println(" sum of prime no's is "+sum) 
+  } 
 } 
 Output sum of prime no's is 1060 
 
@@ -70,37 +82,43 @@ Output sum of prime no's is 1060
 object maxmin { 
   def main(args:Array[String]) 
   {     
- 	println("how many numbers : ")    
- var n=scala.io.StdIn.readInt()    
- var A=new Array[Int](n)    
- for(i<-0 to n-1) 
+ 	    println("how many numbers : ")    
+      var n=scala.io.StdIn.readInt()    
+      var A=new Array[Int](n)    
+      for(i<-0 to n-1) 
    	 {       
-println("enter element : ")       A(i)=scala.io.StdIn.readInt() 
+        println("enter element : ")       
+        A(i)=scala.io.StdIn.readInt() 
     	}	 
    	 println("Array elements are : ")    
- for(i<-0 to n-1)    
- print(A(i)+"\t")   
- var max=A(0)    
- var min=A(0)     
-for(i<-0 to n-1) 
+    for(i<-0 to n-1)    
+      print(A(i)+"\t")   
+    var max=A(0)    
+    var min=A(0)     
+    for(i<-0 to n-1) 
   	{ 
       if(A(i)>max)     
-    max=A(i)   
-    if(A(i)<min)    
-  min=A(i)   
-  }  
-println("\nmax is : "+max)     println("min is : "+min) 
+       max=A(i)   
+      if(A(i)<min)    
+      min=A(i)   
+   }  
+    println("\nmax is : "+max)    
+     println("min is : "+min) 
   } 
 } 
 
 Output 
 how many numbers :  
-5 enter element :  
-5 enter element :  
-9 enter element :  
+5 
+enter element :  
+5 
+enter element :  
+9 
+enter element :  
 2 
 enter element :  
-1 enter element :  
+1 
+enter element :  
 6 
 Array elements are :  
 5 	9 	2 	1 	6 	 
@@ -114,35 +132,38 @@ import Array._
  def main(args:Array[String]) 
   {   
  	 println("enter no. of rows")  
-var row=scala.io.StdIn.readInt()    println("enter no. of columns")    
-var col=scala.io.StdIn.readInt()   
- var A=ofDim[Int](row,col)    
-var B=ofDim[Int](col,row)   
- for(i<-0 to row-1)   
- { 
+    var row=scala.io.StdIn.readInt()    
+    println("enter no. of columns")    
+    var col=scala.io.StdIn.readInt()   
+    var A=ofDim[Int](row,col)    
+    var B=ofDim[Int](col,row)   
+    for(i<-0 to row-1)   
+    { 
   	   for(j<-0 to col-1)      
-{ 
-      	              println("enter element")        
-A(i)(j)=scala.io.StdIn.readInt() 
+      { 
+      	  println("enter element")        
+          A(i)(j)=scala.io.StdIn.readInt() 
       		 B(j)(i)=A(i)(j) 
    	  }    
-}   
- println("given matrix is : ")    
-for(i<-0 to row-1)    { 
+    }   
+    println("given matrix is : ")    
+    for(i<-0 to row-1)    
+    { 
      for(j<-0 to col-1) 
      {         
        print(A(i)(j)+"\t") 
      }      
-println(" ")    
-} 
+      println(" ")    
+    } 
    println("tranpose of given matrix is :  ")    
-for(j<-0 to col-1)    { 
+    for(j<-0 to col-1)    
+    { 
      for(i<-0 to row-1) 
      {         
        print(A(i)(j)+"\t") 
      }      
-println(" ") 
-   } 
+      println(" ") 
+    } 
   }
  } 
 Output 
@@ -158,48 +179,50 @@ tranpose of given matrix is :
 3	2 	  
 5 	6 	  
 
-6)	 Write a program to check if the matrix is upper triangular or not. 
+6)	Write a program to check if the matrix is upper triangular or not. 
+
 import Array._ 
 import scala.util.control._
- object uppertriagular {  
+object uppertriagular {  
  def main(args: Array[String])   
  { 
- val loop = new Breaks;  
-println("enter total no. of rows.")  
-var row=scala.io.StdIn.readInt()
+  val loop = new Breaks;  
+  println("enter total no. of rows.")  
+  var row=scala.io.StdIn.readInt()
 	var A=ofDim[Int](row,row)  
-println("enter matrix element"); 
- 	 for(i<-0 to row-1) 
+  println("enter matrix element"); 
+ 	for(i<-0 to row-1) 
  { 
- 	       for(j<-0 to row-1) 
-       { 
- 	 	A(i)(j)=scala.io.StdIn.readInt() 
-        } 
+ 	  for(j<-0 to row-1) 
+    { 
+ 	 	    A(i)(j)=scala.io.StdIn.readInt() 
+    } 
  } 
  var flag=0 
  loop.breakable 
  { 
- 	     for(i<-0 to row-1) 
-      { 
- 	           for(j<-0 to row-1) 
-            { 	 
- 	                   if(i>j) 
- 	           { 
- 	 	            if(A(i)(j)!=0) 
- 	 	{ 
+ 	  for(i<-0 to row-1) 
+    { 
+ 	    for(j<-0 to row-1) 
+      { 	 
+ 	      if(i>j) 
+ 	      { 
+ 	 	      if(A(i)(j)!=0) 
+ 	 	      { 
  	 	          flag=1  
-                                         loop.break  
- 	 	 } 
- 	       } 
-         } 	 
+              loop.break  
+ 	 	      } 
+ 	      } 
+      } 	 
+    } 
+  } 
+  if(flag==1)  
+    println("not upper tringular") 
+  else 
+ 	   println("upper tringular") 
+  } 
 } 
-} 
-if(flag==1)  
-println("not upper tringular") 
- else 
- 	     println("upper tringular") 
- } 
-} 
+
  Output enter total no. of rows. 
 2 
 enter matrix element 
@@ -209,7 +232,7 @@ enter matrix element
 upper tringular 
 
 
-7)	: Write a program to count uppercase letters in a string and convert it to lowercase and display the new string.  
+7)Write a program to count uppercase letters in a string and convert it to lowercase and display the new string.  
  
 object stringuppercase {
   def main(args:Array[String]) 
@@ -228,13 +251,16 @@ object stringuppercase {
      }
    }    
   println("total no. of uppercase letters: "+cnt)
-println("modified string is : "+s.toLowerCase())  
+  println("modified string is : "+s.toLowerCase())  
  } 
-} Output 
+} 
+
+Output 
 enter String I am PRATIKSHA I am PRATIKSHA 
 total no. of uppercase letters: 10 modified string is : i am pratiksha 
  
-8)	 Write a program to read a character from user and count the number of occurrences of that character.  
+8)	Write a program to read a character from user and count the number of occurrences of that character.  
+
 object charoccurence { 
   def main(args:Array[String]) 
   {     
@@ -253,11 +279,13 @@ object charoccurence {
      } 
      println("total no of occurence of character: "+c) 
    } 
-} Output 
+} 
+
+Output 
 enter String i am pratiksha enetr character a 
 total no of occurence of character: 3 
  
-9)	: Write a program to read two strings. Remove the occurrence of second string in first string.  
+9)Write a program to read two strings. Remove the occurrence of second string in first string.  
  
 object substringremove {
 def main(args:Array[String]) 
@@ -282,9 +310,13 @@ def main(args:Array[String])
        }while(f) 
       println("remaining string is :"+r) 
   } 
-} Output 
+} 
+
+Output 
 enter string i am pratiksha enter substring am 
 remaining string is :i  pratiksha 
+
+
 10)	Define a class CurrentAccount (accNo, name, balance, minBalance). Define appropriate constructors and operations withdraw(), deposit(), viewBalance(). Create an object and perform operations. 
  
   class account 
@@ -323,7 +355,8 @@ remaining string is :i  pratiksha
    else{ 
      balance=balance-wamount
      println("after withdrawn") 
-   }      } 
+   }      
+  } 
 
 def viewbalance() 
   { 
