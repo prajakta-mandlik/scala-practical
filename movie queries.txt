@@ -1,0 +1,41 @@
+This assignment is based on ‘Movie’ database having collections ‘Film’ and ‘Actor’.  
+                           
+ 
+1. Find the titles of all the films starting with the letter ‘R’ released during the year 2009 and 2011.  
+Query: db.Flim.find({title:/^R/,year:{$in:[2009,2011]}}) 
+
+2) Find the list of films acted by an actor " salman khan". 
+Query: db.Film.find({"actors.fname":"salman khan"}).pretty() 
+ 
+3. Find all the films released in 90s. 
+ Query: db.Flim.find({year:1990}) 
+
+4. Find all films belonging to “Adventure” and “Thriller” genre.  
+Query: db.Flim.find({genre:["Adventure" ,"thriller"]}) 
+
+5. Find all the films having ‘A’ rating.  
+db.Film.find({"releases":{"rating":"A"}}).pretty() 
+
+6.Arrange the film names in ascending order and release year should be in descending order.  
+Query: db.Flim.find({},{"title":1,"year":1,_id:0}).sort({"title":1},{"year":-1}) 
+
+7.Sort the actors in ascending order according to their age.  
+Query: db.Actor.find({},{fname:1,lname:1,_id:0}).sort({age:-1}) 
+
+8. Find movies that are comedies or dramas and are released after 2013.  
+Query:   db.Flim.find({$and:[{$or:[{genre:"comedy"},{genre:"dramas"}]}, {year:{$gt:2013}}]}) 
+
+9. Show the latest 2 films acted by an actor “ ”.  
+  Query:db.Flim.find({actors:["amir khan","Anushaka sharma"]}).limit(2).sort({$natural:-1}) 
+
+
+10) List the titles of films acted by actors “ shahid ” and “kiara ”. 
+Query:  db.Film.find( { $and : [ { "actors.fname":"shahid" }, { "actors.fname":"kiara" }, ] }, { "title":1 } ).pretty() 
+  
+11)Retrive  films with an actor details living in spain 
+ Query: db.Film.find({},{“actor”:[“Address”:{“country”:"spain”} ]}) 
+ 
+12) Retrieve films with actor details. 
+ 
+
+

@@ -1,0 +1,28 @@
+                       Assignment:4 
+This assignment is based on ‘Company’ database having collections ‘Employee’ and ‘Transaction’. 
+                             
+1.	Find employees having designation as either ‘manager’ or ‘floor supervisor’.  
+Query:db.Employee.find({$or:[{"designation":"manager"},{"designation":"f loor supervisior"}]}).pretty() 
+
+2.Find an employee whose name ends with " ___" and print the output in json format.  
+Query: db.Employee.find({"first name":/a$/}).pretty() 
+
+3.Display the name of an employee whose salary is greater than”___” using a MongoDB cursor.  
+Query:  
+               > var myEmployee= db.Employee.find({"salary":{$gt:500}}); 
+               >  while(myEmployee.hasNext()) 
+               > { 
+                …    print(tojson(myEmployee.next())); 
+             .. . } 
+
+4) Sort the employees in the descending order of their designation. 
+Query:  db.Employee.find({},{designation:1,_id:0}).sort({"designation":-1})
+
+ 5) Count the total number of employees in a collection. 
+Query:   db.Employee.count() 
+
+8)	Find the transaction id of the latest transaction. 
+Query:  db.Transaction.find({},{"transaction id":1}).sort({$natural:1}).limit(1) 
+ 
+9)	Find designation of employees who have made transaction of amount greater than Rs. 500.  
+10)	Find the total quantity of a particular item sold using Map Reduce. 

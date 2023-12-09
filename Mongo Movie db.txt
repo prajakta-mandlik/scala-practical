@@ -1,0 +1,210 @@
+1.	Create a database with the name ‘Movie’.
+  ->use movie
+*********************************
+2.	A ‘Film’ is a collection of documents with the following fields: a. Film Id
+b.	Title of the film
+c.	Year of release
+d.	Genre / Category (like adventure, action, sci-fi, romantic etc.) A filmcan belong to more than one genre.
+e.	Actors (First name and Last name)A film can have more than one actor.
+f.	Director (First name and Last name)A film can have more than one director.
+g.	Release details (It consists of places of release, dates of release and rating ofthe film.)
+QUERIES
+1. Insert at least 10 documents in the collection Film –
+a.	Insert at least one document with film belonging to two genres.
+->db.film.insert({"_id":1,"title":"tare jamin par","year":2007,genre:["Adventure","action"],actors:
+["amir khan","D safari"],director:"amir khan",releases:[{country:"India",date:ISODate("2007-1014"),rating:5}]})
+************************************************************************
+b.	Insert at least one document with film that is released at more than one placeand on two different dates
+ -> db.film.insert({"_id":2,"title":"lagan","year":2008,genre:["romantic","action"],actors:["amir khan","Rohit shetty"],director:"amir khan",releases:[{country:"India",date:ISODate("2008-1014"),rating:5},{country:"US",date:"2009-10-4",rating:4}]})
+ ******************
+c.	Insert at least three documents with the films released in the same year.
+->db.film.insert({"_id":3,"title":"mann","year":2004,genre:["romantic","action"],actors:["amir khan","Rohit shetty"],director:"amir khan",releases:[{country:"India",date:ISODate("2004-0214"),rating:5}]})
+WriteResult({ "nInserted" : 1 })
+> db.film.insert({"_id":4,"title":"HSSH","year":2004,genre:["romantic","action"],actors:["salman khan","karishma kapoor"],director:"rohit shetty",releases:[{country:"India",date:ISODate("200602-14"),rating:6}]})
+WriteResult({ "nInserted" : 1 })
+****************************************
+d.	Insert at least two documents with the films directed by one director.
+->db.film.insert({"_id":5,"title":"mela","year":2007,genre:["romantic","action"],actors:["salman khan","karishma kapoor"],director:"farah khan",releases:[{country:"India",date:ISODate("2006-0214"),rating:6}]})
+> db.film.insert({"_id":6,"title":"devdas","year":2008,genre:["romantic","action"],actors:["salman khan","karishma kapoor"],director:"farah khan",releases:[{country:"India",date:ISODate("2006-0214"),rating:6}]})
+************************************************************
+e.	Insert at least two documents with films those are acted by a pair ‘Madhuri
+Dixit’ and ‘Shahrukh Khan’.
+->db.film.insert({"_id":7,"title":"dil to pagal hai","year":2008,genre:["romantic","action"],actors:
+["shahrukh khan","madhuri dixit"],director:"farah khan",releases:
+[{country:"India",date:ISODate("2006-02-14"),rating:6}]})
+********************************************************************************
+**********************
+********************************************************************************
+3. An ‘Actor’ is a collection of documents with the following fields: a. Actor Id
+b.	First name
+c.	Last Name
+d.	Address (Street, City, State, Country, Pin-code)
+e.	Contact Details (Email Id and Phone No)
+f.	Age of an actor.
+2. Insert at least 10 documents in the collection Actor.
+Make sure, you are inserting the names of actors who have acted in films, given in the ‘Film’ collection.
+->db.actor.insert({"fname":"amir","lname":"khan",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40}) >db.actor.insert({"fname":"salaman","lname":"khan",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40})
+>db.actor.insert({"fname":"shahrukh","lname":"khan",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40})
+>db.actor.insert({"fname":"saif","lname":"khan",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40})
+>db.actor.insert({"fname":"farah","lname":"khan",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40})
+>db.actor.insert({"fname":"karina","lname":"khan",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40})
+>db.actor.insert({"fname":"tabbu","lname":"khan",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40})
+>db.actor.insert({"fname":"kadar","lname":"khan",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40}) >db.actor.insert({"fname":"shahid","lname":"kapoor",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40})
+>db.actor.insert({"fname":"tiger","lname":"shroff",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40})
+*****************************************************************************
+3.	Display all the documents inserted in both the collections.
+->db.film.find().pretty()
+ db.actor.find().pretty()
+**************************************************
+4.	Add a value to the rating of the film whose title starts with ‘T’.
+->db.film.find({title:/^T/})
+**************************************************
+5.	Add an actor named "_________" in the ‘Actor’ collection. Also addthe details of the film in ‘Film’ collection in which this actor has acted in.
+->db.actor.insert({"fname":"shahid","lname":"kapoor",Address:
+{street:"kunj",city:"mumbai",country:"india",pin:422605},contacts:
+{email:"aa@gmail.com",phno:1234567894},age:40})
+> db.film.insert({"_id":11,"title":"vivah","year":2008,genre:["romantic","action"],actors:["shahid kapoor","amruta roy"],director:"farah khan",releases:[{country:"India",date:ISODate("2006-0214"),rating:6}]})
+*********************************************************************
+6.	Delete the film "_____".
+->db.film.remove({"title":"HSSH"}) ********************************
+7.	Delete an actor named "----".
+->db.actor.remove({"fname":"saif "})
+*************************************************
+8.	Delete all actors from an ‘Actor’ collection who have age greater than “_____”
+->db.actor.remove({"age":{$gt:50}})
+*********************************************************** 9. Update the actor’s address where Actor Id is “____________”. ->db.actor.update({"_id":11},{$set:{Address:{street:"navin nagar road",city:"pune",country:"india",pin:422605}}})
+********************************************************************************
+**********************
+10.Update the genre of the film directed by “_____”.
+->db.film.update({director:"amir khan"},{$set:{genre:["romantic","action"]})
+
+
+
+
+Create database company: use company create collection employee db.createCollection('emp') 
+{ "ok" : 1 } 
+create collection transaction db.createCollection('transaction') 
+{ "ok" : 1 } 
+Queries 
+1.Insert 5 documents into employee collection db.emp.insert({eid:1,fname:"payal",lname:"khilari",email:"pk@gmail.com",phone:
+987654321,addr:[{hno:80,street:"puna-nashik 
+road",city:"sangamner",state:"maharashtra",country:"india",pin:422605}],salary:45
+00,designation:"abc",experience:"1 year",joindate:ISODate("2021-0821"),birthdate:ISODate("2000-05-26")}) 
+WriteResult({ "nInserted" : 1 }) 
+> db.emp.insert({eid:2,fname:"pooja",lname:"saskar",email:"ps@gmail.com",phone:
+987654321,addr:[{hno:80,street:"devi 
+lane",city:"sangamner",state:"maharashtra",country:"india",pin:422605}],salary:45
+00,designation:"abc",experience:"1 year",joindate:ISODate("2021-08-
+21"),birthdate:ISODate("2000-01-26")}) 
+WriteResult({ "nInserted" : 1 }) 
+> 
+db.emp.insert({eid:3,fname:"shital",lname:"walunj",email:"sw@gmail.com",phone
+:987654321,addr:[{hno:80,street:"akole 
+road",city:"sangamner",state:"maharashtra",country:"india",pin:422605}],salary:45 00,designation:"pqr",experience:"1 year",joindate:ISODate("2021-0821"),birthdate:ISODate("1999-07-27")}) 
+WriteResult({ "nInserted" : 1 }) 
+> 
+db.emp.insert({eid:4,fname:"kanchan",lname:"ghule",email:"pk@gmail.com",phon e:987654321,addr:[{hno:80,street:"akole 
+road",city:"sangamner",state:"maharashtra",country:"india",pin:422605}],salary:45
+00,designation:"pqr",experience:"1 year",joindate:ISODate("2021-0821"),birthdate:ISODate("1999-05-08")}) 
+WriteResult({ "nInserted" : 1 }) 
+ 
+2.Insert 5 documents into transaction collection 
+
+db.transaction.insert({tid:1,tdate:ISODate("2021-05-10"),name:"payal",tdetails:[{itemid:1,iname:"abc",quantity:2,price:200}],payment:[{type:"debit",amount:400}],remark:"payment successful"}) WriteResult({ "nInserted" : 1 }) 
+
+>db.transaction.insert({tid:2,tdate:ISODate("2021-05-10"),name:"pooja",tdetails:[{itemid:2,iname:"pqr",quantity:3,price:500}],payment:[{type:"debit",amount:1500}],remark:"payment successful"}) WriteResult({ "nInserted" : 1 })
+ 
+> db.transaction.insert({tid:3,tdate:ISODate("2021-04-10"),name:"shital",tdetails:[{itemid:3,iname:"abc",quantity:3,price:200}],payment:[{type:"credit",amount:600}],remark:"payment successful"}) WriteResult({ "nInserted" : 1 })
+ 
+> 
+db.transaction.insert({tid:4,tdate:ISODate("2021-02-10"),name:"shital",tdetails:[{itemid:4,iname:"abc",quantity:3,price:200}],payment:[{type:"credit",amount:600}],remark:"payment successful"}) WriteResult({ "nInserted" : 1 }) 
+
+
+3.display all the douments of both the collection. 
+db.emp.find().pretty() db.transaction.find().pretty() 
+
+ 4.Update salary of all employees by giving an increment of Rs. 4000.   
+ > db.Employee.update({},{$inc:{salary:4000}},{multi:true})  Or   
+db.emp.update({eid:' '},{$set:{salary:+4000}}) 
+ 
+5. Update the remark for transaction id 201.  
+db.emp.update({"eid":201},{$set:{remark:"payment successful"}}) 
+
+6. Update designation of an employee named “----- ” from supervisor to manager.  
+db.emp.update({fname:"shital"},{$set:{designation:"manager"}}) 
+
+7. Update designation of an employee having Employee Id as------ .  
+db.emp.update({eid:3},{$set:{designation:"manager"}}) 
+
+8.Change the address of an employee having Employee Id as----- .  db.emp.update({eid:4},{$set:{addr:{hno:84,street:"puna road",city:"sangamner",state:"maharashtra",country:"India",pin:422605}}}) 
+
+9.	Delete transaction made by “----- ” employee on the given date.  db.transaction.remove({"name":"kanchan"},{"tdate":ISODate("2021-02-10")}) 
+10.Delete all the employees whose first name starts with ‘K’. 
+ db.emp.remove({"fname":/^k/}) 
+
+
+
+                                 Assignment : 3     
+       
+This assignment is based on ‘Movie’ database having collections ‘Film’ and ‘Actor’.  
+                           
+ 
+1. Find the titles of all the films starting with the letter ‘R’ released during the year 2009 and 2011.  
+Query: db.Flim.find({title:/^R/,year:{$in:[2009,2011]}}) 
+
+2) Find the list of films acted by an actor " salman khan". 
+Query: db.Film.find({"actors.fname":"salman khan"}).pretty() 
+ 
+3. Find all the films released in 90s. 
+ Query: db.Flim.find({year:1990}) 
+
+4. Find all films belonging to “Adventure” and “Thriller” genre.  
+Query: db.Flim.find({genre:["Adventure" ,"thriller"]}) 
+
+5. Find all the films having ‘A’ rating.  
+db.Film.find({"releases":{"rating":"A"}}).pretty() 
+
+6.Arrange the film names in ascending order and release year should be in descending order.  
+Query: db.Flim.find({},{"title":1,"year":1,_id:0}).sort({"title":1},{"year":-1}) 
+
+7.Sort the actors in ascending order according to their age.  
+Query: db.Actor.find({},{fname:1,lname:1,_id:0}).sort({age:-1}) 
+
+8. Find movies that are comedies or dramas and are released after 2013.  
+Query:   db.Flim.find({$and:[{$or:[{genre:"comedy"},{genre:"dramas"}]}, {year:{$gt:2013}}]}) 
+
+9. Show the latest 2 films acted by an actor “ ”.  
+  Query:db.Flim.find({actors:["amir khan","Anushaka sharma"]}).limit(2).sort({$natural:-1}) 
+
+
+10) List the titles of films acted by actors “ shahid ” and “kiara ”. 
+Query:  db.Film.find( { $and : [ { "actors.fname":"shahid" }, { "actors.fname":"kiara" }, ] }, { "title":1 } ).pretty() 
+  
+11)Retrive  films with an actor details living in spain 
+ Query: db.Film.find({},{“actor”:[“Address”:{“country”:"spain”} ]}) 
+ 
+12) Retrieve films with actor details. 
+ 
+
+
+
